@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aymane Sajed</title>
+<meta name="description" content="Aymane Sajed — Systems & Backend Developer | Aspiring DevOps Engineer" />
+
+<style>
+  :root{
+    --bg: #f4efe7;
+    --bg2: #ece5da;
+    --panel: rgba(255,255,255,.72);
+    --panel-strong: rgba(255,255,255,.9);
+    --text: #101828;
+    --muted: #475467;
+    --soft: #667085;
+    --line: rgba(16,24,40,.12);
+    --line-strong: rgba(16,24,40,.18);
+    --accent: #0f766e;
+    --accent-2: #1d4ed8;
+    --accent-3: #7c3aed;
+    --shadow: 0 18px 50px rgba(16,24,40,.08);
+    --shadow-soft: 0 10px 24px rgba(16,24,40,.05);
+    --radius: 22px;
+    --radius-sm: 16px;
+    --max: 1180px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    color: var(--text);
+    background:
+      radial-gradient(circle at top left, rgba(29,78,216,.08), transparent 28%),
+      radial-gradient(circle at top right, rgba(15,118,110,.08), transparent 25%),
+      linear-gradient(180deg, var(--bg), var(--bg2));
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* subtle paper/grid texture */
+  body::before{
+    content:"";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(to right, rgba(16,24,40,.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16,24,40,.035) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,.42), transparent 90%);
+    opacity: .6;
+    z-index: 0;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  .wrap { position: relative; z-index: 1; }
+
+  .container {
+    width: min(var(--max), calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  /* top bar */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(16px);
+    background: rgba(244,239,231,.72);
+    border-bottom: 1px solid rgba(16,24,40,.08);
+  }
+
+  .topbar-inner{
+    height: 72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 16px;
+  }
+
+  .brand {
+    display:flex;
+    align-items:center;
+    gap: 12px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+  }
+
+  .brand-mark{
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 0 0 6px rgba(15,118,110,.08);
+  }
+
+  .nav {
+    display:flex;
+    align-items:center;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .nav a{
+    position: relative;
+    color: var(--soft);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color .2s ease;
+  }
+
+  .nav a:hover,
+  .nav a.active{
+    color: var(--text);
+  }
+
+  .nav a::after{
+    content:"";
+    position:absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transition: transform .22s ease;
+  }
+
+  .nav a.active::after,
+  .nav a:hover::after{
+    transform: scaleX(1);
+  }
+
+  /* hero */
+  .hero{
+    padding: 68px 0 34px;
+  }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.45fr .9fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .hero-main,
+  .hero-side,
+  .panel,
+  .card,
+  .timeline-item{
+    border: 1px solid rgba(16,24,40,.09);
+    background: var(--panel);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .hero-main{
+    border-radius: 30px;
+    padding: 34px;
+    min-height: 520px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow:hidden;
+    position: relative;
+  }
+
+  .hero-main::before{
+    content:"";
+    position:absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 10% 10%, rgba(29,78,216,.08), transparent 22%),
+      radial-gradient(circle at 90% 20%, rgba(15,118,110,.10), transparent 20%);
+    pointer-events:none;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    width: fit-content;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.7);
+    border: 1px solid rgba(16,24,40,.08);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow-dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  h1{
+    margin: 18px 0 14px;
+    font-size: clamp(3rem, 7vw, 6.2rem);
+    line-height: .95;
+    letter-spacing: -.06em;
+    max-width: 8ch;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-copy{
+    max-width: 58ch;
+    font-size: 18px;
+    color: var(--muted);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-meta{
+    margin-top: 24px;
+    display:flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tag{
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.74);
+    border: 1px solid rgba(16,24,40,.08);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .tag i{
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent-3), var(--accent-2));
+    display:inline-block;
+  }
+
+  .cta-row{
+    display:flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap: 10px;
+    height: 48px;
+    padding: 0 18px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid rgba(16,24,40,.1);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    will-change: transform;
+  }
+
+  .btn:hover{
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .btn-primary{
+    color: white;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border: none;
+  }
+
+  .btn-secondary{
+    background: rgba(255,255,255,.82);
+    color: var(--text);
+  }
+
+  .hero-side{
+    border-radius: 30px;
+    padding: 22px;
+    display:flex;
+    flex-direction:column;
+    gap: 14px;
+  }
+
+  .side-card{
+    border-radius: 22px;
+    padding: 18px;
+    background: var(--panel-strong);
+    border: 1px solid rgba(16,24,40,.08);
+  }
+
+  .stat-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .stat{
+    border-radius: 18px;
+    padding: 16px;
+    background: rgba(255,255,255,.8);
+    border: 1px solid rgba(16,24,40,.08);
+  }
+
+  .stat .k{
+    display:block;
+    font-size: 12px;
+    color: var(--soft);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+
+  .stat .v{
+    display:block;
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -.03em;
+  }
+
+  .signal{
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+  }
+
+  .signal-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(16,24,40,.08);
+  }
+
+  .signal-row:last-child{ border-bottom:none; }
+  .signal-row span:first-child{ color: var(--soft); font-size: 14px; }
+  .signal-row strong{ font-size: 14px; }
+
+  .section{
+    padding: 24px 0 0;
+  }
+
+  .section-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap: 16px;
+    margin: 32px 0 18px;
+  }
+
+  .section-title{
+    margin: 0;
+    font-size: clamp(1.6rem, 3vw, 2.35rem);
+    letter-spacing: -.04em;
+    line-height: 1.05;
+  }
+
+  .section-note{
+    max-width: 56ch;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .grid-2{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .panel{
+    border-radius: 26px;
+    padding: 24px;
+  }
+
+  .panel p{
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .callout{
+    display:flex;
+    gap: 14px;
+    align-items:flex-start;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.76);
+    border: 1px solid rgba(16,24,40,.08);
+  }
+
+  .callout .dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    margin-top: 6px;
+    flex: none;
+  }
+
+  .callout strong{ display:block; margin-bottom: 6px; }
+  .callout span{ color: var(--muted); }
+
+  .chips{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .chip{
+    display:inline-flex;
+    align-items:center;
+    padding: 9px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(16,24,40,.08);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* journey */
+  .timeline{
+    display:grid;
+    gap: 14px;
+  }
+
+  .timeline-item{
+    border-radius: 22px;
+    padding: 20px;
+    display:grid;
+    grid-template-columns: 130px 1fr;
+    gap: 18px;
+    align-items:start;
+  }
+
+  .timeline-time{
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--accent);
+    font-weight: 800;
+  }
+
+  .timeline-body h3{
+    margin: 0 0 8px;
+    font-size: 18px;
+    letter-spacing: -.02em;
+  }
+
+  .timeline-body p{
+    margin: 0;
+    color: var(--muted);
+  }
+
+  /* projects */
+  .projects{
+    display:grid;
+    gap: 18px;
+  }
+
+  .project{
+    border-radius: 26px;
+    overflow:hidden;
+    padding: 0;
+  }
+
+  .project-top{
+    padding: 22px 22px 16px;
+    border-bottom: 1px solid rgba(16,24,40,.08);
+    display:flex;
+    justify-content:space-between;
+    gap: 16px;
+    align-items:flex-start;
+  }
+
+  .project-name{
+    margin: 0;
+    font-size: 26px;
+    letter-spacing: -.04em;
+    line-height: 1.05;
+  }
+
+  .project-role{
+    color: var(--soft);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .project-content{
+    padding: 22px;
+    display:grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 18px;
+  }
+
+  .project-desc{
+    color: var(--muted);
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .project-list{
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+    display:grid;
+    gap: 10px;
+  }
+
+  .project-list li{
+    position: relative;
+    padding-left: 18px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .project-list li::before{
+    content:"";
+    position:absolute;
+    left: 0;
+    top: .65em;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  }
+
+  .project-meta{
+    display:grid;
+    gap: 12px;
+    align-content:start;
+  }
+
+  .meta-box{
+    border-radius: 18px;
+    padding: 14px;
+    background: rgba(255,255,255,.76);
+    border: 1px solid rgba(16,24,40,.08);
+  }
+
+  .meta-box .label{
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--soft);
+    font-weight: 800;
+  }
+
+  .meta-box .value{
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .project-links{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .repo-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .repo-card{
+    border-radius: 22px;
+    padding: 18px;
+    background: rgba(255,255,255,.76);
+    border: 1px solid rgba(16,24,40,.08);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+
+  .repo-card:hover{
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+  }
+
+  .repo-card h3{
+    margin: 0 0 8px;
+    font-size: 18px;
+    letter-spacing: -.03em;
+  }
+
+  .repo-card p{
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .repo-card .repo{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    color: var(--accent-2);
+    font-size: 13px;
+    word-break: break-all;
+  }
+
+  /* contact */
+  .contact{
+    padding-bottom: 56px;
+  }
+
+  .contact-box{
+    border-radius: 30px;
+    padding: 28px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.74)),
+      linear-gradient(135deg, rgba(15,118,110,.08), rgba(29,78,216,.08));
+    border: 1px solid rgba(16,24,40,.08);
+    box-shadow: var(--shadow);
+  }
+
+  .contact-grid{
+    display:grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 18px;
+    align-items:center;
+  }
+
+  .contact-box h2{
+    margin: 0 0 10px;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    letter-spacing: -.04em;
+  }
+
+  .contact-box p{
+    margin: 0;
+    color: var(--muted);
+    max-width: 60ch;
+  }
+
+  .contact-addr{
+    display:grid;
+    gap: 10px;
+    justify-items:start;
+  }
+
+  .contact-email{
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: var(--text);
+  }
+
+  .footer{
+    padding: 26px 0 42px;
+    color: var(--soft);
+    font-size: 14px;
+  }
+
+  /* reveal */
+  .reveal{
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+
+  .reveal.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* responsive */
+  @media (max-width: 980px){
+    .hero-grid,
+    .grid-2,
+    .project-content,
+    .contact-grid,
+    .repo-grid{
+      grid-template-columns: 1fr;
+    }
+
+    .hero-main{
+      min-height: unset;
+    }
+  }
+
+  @media (max-width: 720px){
+    .topbar-inner{
+      height: auto;
+      padding: 16px 0;
+      align-items:flex-start;
+      flex-direction: column;
+    }
+
+    .nav{
+      gap: 14px 18px;
+    }
+
+    .hero{
+      padding-top: 24px;
+    }
+
+    .hero-main,
+    .hero-side,
+    .panel,
+    .contact-box{
+      border-radius: 22px;
+    }
+
+    .hero-main{
+      padding: 24px;
+    }
+
+    .timeline-item{
+      grid-template-columns: 1fr;
+    }
+
+    .section-head{
+      flex-direction: column;
+      align-items:flex-start;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *, *::before, *::after{
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        <span>Aymane Sajed</span>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#journey">Journey</a>
+        <a href="#projects">Projects</a>
+        <a href="#repos">Repos</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-main reveal">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-dot"></span> Systems-first portfolio</div>
+            <h1>Aymane Sajed</h1>
+            <p class="hero-copy">
+              Systems & Backend Developer | Aspiring DevOps Engineer.
+              I build from fundamentals: memory, processes, Linux, containers, sockets, and clean backend logic.
+            </p>
+
+            <div class="hero-meta">
+              <span class="tag"><i></i> 1337 coding school</span>
+              <span class="tag"><i></i> Linux / Docker / C++</span>
+              <span class="tag"><i></i> DevOps peer-learning club founder</span>
+            </div>
+
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#projects">See selected work</a>
+              <a class="btn btn-secondary" href="https://github.com/Aymanesaj" target="_blank" rel="noreferrer">GitHub profile</a>
+            </div>
+          </div>
+
+          <div class="callout" style="margin-top: 28px;">
+            <span class="dot"></span>
+            <div>
+              <strong>Focus</strong>
+              <span>
+                Low-level programming, containerization, Linux environments, and the kind of engineering that
+                shows up in production systems, not just tutorials.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-side reveal">
+          <div class="side-card">
+            <div class="stat-grid">
+              <div class="stat">
+                <span class="k">Core languages</span>
+                <span class="v">C / C++</span>
+              </div>
+              <div class="stat">
+                <span class="k">Primary stack</span>
+                <span class="v">Linux + Docker</span>
+              </div>
+              <div class="stat">
+                <span class="k">Backend work</span>
+                <span class="v">Flask / Sockets</span>
+              </div>
+              <div class="stat">
+                <span class="k">Mindset</span>
+                <span class="v">Discipline</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="side-card signal">
+            <div class="signal-row">
+              <span>Current direction</span>
+              <strong>Systems / DevOps</strong>
+            </div>
+            <div class="signal-row">
+              <span>Working style</span>
+              <strong>Practical, deep, precise</strong>
+            </div>
+            <div class="signal-row">
+              <span>Preferred environments</span>
+              <strong>Arch / Ubuntu</strong>
+            </div>
+            <div class="signal-row">
+              <span>Portfolio style</span>
+              <strong>Minimal, serious, readable</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-head reveal">
+        <h2 class="section-title">About</h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel reveal">
+          <p>
+            I am a student at the 1337 coding school, deeply focused on low-level programming,
+            containerization, and system architecture. I prefer understanding the mechanics first:
+            how memory is managed, how processes communicate, how Linux behaves, and how services are deployed.
+          </p>
+        </div>
+
+        <div class="panel reveal">
+          <p>
+            I value discipline and continuous improvement. I work across Arch and Ubuntu environments,
+            and I recently founded a DevOps peer-learning club on campus to build practical infrastructure
+            understanding with others who want to go beyond theory.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="journey">
+      <div class="section-head reveal">
+        <h2 class="section-title">Journey</h2>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <div class="timeline-time">Foundation</div>
+          <div class="timeline-body">
+            <h3>Built strong fundamentals in C and systems thinking</h3>
+            <p>
+              Started by learning how to think in terms of memory, pointers, processes, and control flow.
+              That foundation shaped how I approach every other layer of development.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-time">Practice</div>
+          <div class="timeline-body">
+            <h3>Worked on projects that force real understanding</h3>
+            <p>
+              From ft_printf and Get Next Line to Minishell, Push_swap, and a raycasting engine, I built
+              projects that require careful logic, debugging discipline, and attention to edge cases.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-time">Infrastructure</div>
+          <div class="timeline-body">
+            <h3>Moved toward backend and DevOps-shaped thinking</h3>
+            <p>
+              Docker, Linux environments, and deployment workflows became part of my daily toolkit.
+              The goal is to understand how software behaves outside the editor and beyond local execution.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-time">Community</div>
+          <div class="timeline-body">
+            <h3>Founded a DevOps peer-learning club on campus</h3>
+            <p>
+              I wanted a space where the learning is practical, collaborative, and focused on real tools,
+              not just buzzwords. That experience sharpened how I explain, organize, and communicate technical ideas.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-head reveal">
+        <h2 class="section-title">Selected Projects</h2>
+      </div>
+
+      <div class="projects">
+        <article class="panel project reveal">
+          <div class="project-top">
+            <h3 class="project-name">Webserv</h3>
+            <div class="project-role">Custom HTTP server</div>
+          </div>
+          <div class="project-content">
+            <div>
+              <p class="project-desc">
+                A custom HTTP server built from scratch in C++ with a team of three. It handles sockets,
+                non-blocking I/O, request parsing, multiple clients, and configuration files. The project
+                is a strong signal that I can reason about networked systems, state management, and server behavior.
+              </p>
+              <ul class="project-list">
+                <li>Built around socket programming and event-driven request handling</li>
+                <li>Focused on parsing, correctness, and predictable server responses</li>
+                <li>Useful proof of backend and protocol-level thinking</li>
+              </ul>
+            </div>
+            <div class="project-meta">
+              <div class="meta-box">
+                <div class="label">Repository</div>
+                <div class="value"><a href="https://github.com/Aymanesaj/webserv" target="_blank" rel="noreferrer">github.com/Aymanesaj/webserv</a></div>
+              </div>
+              <div class="meta-box">
+                <div class="label">Stack</div>
+                <div class="value">C++ · sockets · parsing · non-blocking I/O</div>
+              </div>
+              <div class="meta-box">
+                <div class="label">Outcome</div>
+                <div class="value">A real server implementation with production-style concerns</div>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-secondary" href="https://github.com/Aymanesaj/webserv" target="_blank" rel="noreferrer">Open repo</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel project reveal">
+          <div class="project-top">
+            <h3 class="project-name">Inception</h3>
+            <div class="project-role">Containerized infrastructure</div>
+          </div>
+          <div class="project-content">
+            <div>
+              <p class="project-desc">
+                A system administration project centered on Dockerizing a complete infrastructure using Docker Compose.
+                It includes Nginx, WordPress, and MariaDB, and demonstrates how services are isolated, connected, and deployed
+                as a single environment.
+              </p>
+              <ul class="project-list">
+                <li>Shows practical container orchestration and service separation</li>
+                <li>Reinforces deployment thinking and infrastructure structure</li>
+                <li>Good evidence of DevOps interest and hands-on Linux fluency</li>
+              </ul>
+            </div>
+            <div class="project-meta">
+              <div class="meta-box">
+                <div class="label">Repository</div>
+                <div class="value"><a href="https://github.com/Aymanesaj/inception" target="_blank" rel="noreferrer">github.com/Aymanesaj/inception</a></div>
+              </div>
+              <div class="meta-box">
+                <div class="label">Stack</div>
+                <div class="value">Docker · Compose · Nginx · WordPress · MariaDB</div>
+              </div>
+              <div class="meta-box">
+                <div class="label">Outcome</div>
+                <div class="value">A working infrastructure built from modular services</div>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-secondary" href="https://github.com/Aymanesaj/inception" target="_blank" rel="noreferrer">Open repo</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel project reveal">
+          <div class="project-top">
+            <h3 class="project-name">Raycasting Engine</h3>
+            <div class="project-role">Graphics / rendering</div>
+          </div>
+          <div class="project-content">
+            <div>
+              <p class="project-desc">
+                A 3D graphical engine built in C using MiniLibX. The project focuses on texture mapping,
+                optimized rendering, and turning a 2D map into a convincing first-person 3D experience.
+                It reflects comfort with math, rendering pipelines, and performance-sensitive code.
+              </p>
+              <ul class="project-list">
+                <li>Demonstrates spatial reasoning and real-time rendering concepts</li>
+                <li>Requires tight control over pixel drawing and frame updates</li>
+                <li>Useful proof that I can work across graphics and systems layers</li>
+              </ul>
+            </div>
+            <div class="project-meta">
+              <div class="meta-box">
+                <div class="label">Repository</div>
+                <div class="value"><a href="https://github.com/Aymanesaj/Cub3d" target="_blank" rel="noreferrer">github.com/Aymanesaj/Cub3d</a></div>
+              </div>
+              <div class="meta-box">
+                <div class="label">Stack</div>
+                <div class="value">C · MiniLibX · textures · rendering</div>
+              </div>
+              <div class="meta-box">
+                <div class="label">Outcome</div>
+                <div class="value">A working 3D engine with visual depth</div>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-secondary" href="https://github.com/Aymanesaj/Cub3d" target="_blank" rel="noreferrer">Open repo</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel project reveal">
+          <div class="project-top">
+            <h3 class="project-name">Minishell</h3>
+            <div class="project-role">Shell / process control</div>
+          </div>
+          <div class="project-content">
+            <div>
+              <p class="project-desc">
+                A custom shell implementation featuring parsing, pipes, redirections, and process management.
+                The project forces a serious understanding of command execution, environment handling, and shell behavior.
+              </p>
+              <ul class="project-list">
+                <li>Strong evidence of process and execution model understanding</li>
+                <li>Involves parsing, redirection logic, and pipeline orchestration</li>
+                <li>Excellent bridge between systems programming and user-facing tooling</li>
+              </ul>
+            </div>
+            <div class="project-meta">
+              <div class="meta-box">
+                <div class="label">Repository</div>
+                <div class="value"><a href="https://github.com/Aymanesaj/minishell" target="_blank" rel="noreferrer">github.com/Aymanesaj/minishell</a></div>
+              </div>
+              <div class="meta-box">
+                <div class="label">Stack</div>
+                <div class="value">C · parsing · pipes · redirections · processes</div>
+              </div>
+              <div class="meta-box">
+                <div class="label">Outcome</div>
+                <div class="value">A practical shell with real command execution flow</div>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-secondary" href="https://github.com/Aymanesaj/minishell" target="_blank" rel="noreferrer">Open repo</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel project reveal">
+          <div class="project-top">
+            <h3 class="project-name">Algorithm & Systems Suite</h3>
+            <div class="project-role">Foundations / problem solving</div>
+          </div>
+          <div class="project-content">
+            <div>
+              <p class="project-desc">
+                A grouped set of smaller but important projects: Push_swap, ft_printf, and Get Next Line.
+                Together they show my ability to work with constrained environments, memory, variadic functions,
+                static state, and algorithmic optimization.
+              </p>
+              <ul class="project-list">
+                <li>Push_swap for optimized sorting under strict rules</li>
+                <li>ft_printf for formatting logic and variadic handling</li>
+                <li>Get Next Line for buffered file reading with static memory</li>
+              </ul>
+            </div>
+            <div class="project-meta">
+              <div class="meta-box">
+                <div class="label">Repositories</div>
+                <div class="value">
+                  <a href="https://github.com/Aymanesaj/push_swap" target="_blank" rel="noreferrer">push_swap</a> ·
+                  <a href="https://github.com/Aymanesaj/ft_printf" target="_blank" rel="noreferrer">ft_printf</a> ·
+                  <a href="https://github.com/Aymanesaj/get_next_line" target="_blank" rel="noreferrer">get_next_line</a>
+                </div>
+              </div>
+              <div class="meta-box">
+                <div class="label">Stack</div>
+                <div class="value">C · algorithms · memory · parsing · constraints</div>
+              </div>
+              <div class="meta-box">
+                <div class="label">Outcome</div>
+                <div class="value">Proof of strong fundamentals and implementation discipline</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="repos">
+      <div class="section-head reveal">
+        <h2 class="section-title">Repository Index</h2>
+      </div>
+
+      <div class="repo-grid">
+        <article class="repo-card reveal">
+          <h3>GitHub Profile</h3>
+          <p>A clean entry point for recruiters, classmates, and collaborators.</p>
+          <div class="repo">github.com/Aymanesaj</div>
+        </article>
+
+        <article class="repo-card reveal">
+          <h3>Most important repo</h3>
+          <p>Place your strongest public project here. For you, that is probably Webserv.</p>
+          <div class="repo">github.com/Aymanesaj/webserv</div>
+        </article>
+
+        <article class="repo-card reveal">
+          <h3>Infrastructure work</h3>
+          <p>Use this slot for Inception or any deployment-oriented project.</p>
+          <div class="repo">github.com/Aymanesaj/inception</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="contact-box reveal">
+        <div class="contact-grid">
+          <div>
+            <h2>Contact</h2>
+            <p>
+              Open to internships, collaborations, and serious engineering opportunities.
+              The cleanest way to reach me is through email.
+            </p>
+          </div>
+          <div class="contact-addr">
+            <div class="contact-email">contact@aymanesajed.com</div>
+            <a class="btn btn-primary" href="mailto:contact@aymanesajed.com">Send email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+  const navLinks = Array.from(document.querySelectorAll(".nav a"));
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach((el) => revealObserver.observe(el));
+
+  const sections = ["about", "journey", "projects", "repos", "contact"]
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const id = entry.target.id;
+      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === `#${id}`));
+    });
+  }, { threshold: 0.45, rootMargin: "-15% 0px -35% 0px" });
+
+  sections.forEach(section => navObserver.observe(section));
+</script>
+</body>
+</html>

@@ -5,7 +5,7 @@ app = Flask(__name__, static_folder="static")
 
 @app.route("/")
 def home() -> Response:
-    return send_file("app.html")
+    return send_file("index.html")
 
 
 @app.route("/health")
