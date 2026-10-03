@@ -27,6 +27,6 @@ module "bastion" {
   source         = "../../modules/bastion"
   ssh_public_key = var.ssh_public_key
   private_subnet = module.network.private_subnet
-  private_ip = module.app.private_ip
+  private_ip     = module.app.private_ip
   compartment_id = var.compartment_id
 }
